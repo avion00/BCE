@@ -1,0 +1,75 @@
+<!-- WAP to create two textboxes and two buttons. If the user inputs the value in first
+textbox and click upon the button then the value entered into the first textbox should
+be displayed into second textbox (in uppercase if the user inputted in lowercase and
+vice-versa), similarly for the second textbox. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UPPERCASE To lowercase and vice-versa</title>
+    <script>
+        function reverseCase(input) {
+            return input.split('').map(function(char) {
+                if (char === char.toUpperCase()) {
+                    return char.toLowerCase();
+                } else {
+                    return char.toUpperCase();
+                }
+            }).join('');
+        }
+        
+        function updateTextbox() {
+            var textbox1 = document.getElementById('textbox1');
+            var textbox2 = document.getElementById('textbox2');
+            var inputText = textbox1.value;
+            var reversedText = reverseCase(inputText);
+            textbox2.value = reversedText;
+        }
+        
+        function updateTextbox2() {
+            var textbox1 = document.getElementById('textbox1');
+            var textbox2 = document.getElementById('textbox2');
+            var inputText = textbox2.value;
+            var reversedText = reverseCase(inputText);
+            textbox1.value = reversedText;
+        }
+    </script>
+</head>
+<body style="margin-top: 100px;">
+    <style>
+        .container{
+            text-align: center;
+            font-size: 20px;
+            word-spacing: 3px;
+            margin-top: 50px;
+        }
+        #textbox1, #textbox2{
+            height: 20px;
+            border: 1px solid rgb(5, 88, 38);
+            border-radius: 5px;
+            padding: 5px;
+        }
+         button{
+            height: 30px;
+
+            border: 1px solid rgb(65, 48, 3);
+            background-color: rgb(254, 255, 215);
+            border-radius: 5px;
+            padding: 5px 20px;
+        }
+
+        
+    </style>
+    <h1><u><center> UPPERCASE To lowercase and vice-versa</center></u></h1>
+    <div class="container">
+        <label for="textbox1">1st input:</label>
+        <input type="text" id="textbox1">
+        <button onclick="updateTextbox()">Update Textbox 2</button>
+        <br><br>
+        <label for="textbox2">2nd input:</label>
+        <input type="text" id="textbox2">
+        <button onclick="updateTextbox2()">Update Textbox 1</button>
+    </div>
+    
+</body>
+</html>

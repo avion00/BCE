@@ -1,0 +1,65 @@
+<!-- WAP that will show a text box and 2 radio buttons named start and stop. when start is clicked then display the current time in text box. The time will be stopped while the user selects the stop radio button. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lab2_2</title>
+    <style>
+        .container {
+            text-align: center;
+            margin: 150px;
+        }
+        #timeBox{
+            text-align: center;
+            border: 2px solid rgb(110, 80, 219);
+            border-radius: 10px;
+            font-size: 16px;
+            padding: 5px;
+            height: 20px;
+            width: 200px;
+        }
+        #startRadio, .stopRadio{
+            height: 50px;
+            width: 50px;
+            margin: 20px 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1><u> Stopwatch</u></h1>
+        
+        <input type="text" id="timeBox" disabled>
+        <br>
+        <input type="radio" id="startRadio" name="timeRadio" onclick="startTimer()">
+        <label id="startlabel" for="startRadio"><b>Start</b></label>
+        
+        <input id="stoplabel" type="radio" class="stopRadio" name="timeRadio" onclick="stopTimer()">
+        <label for="stopRadio"><b>Stop</b></label>
+    </div>
+
+    <script>
+        var timer;
+
+        function startTimer() {
+            timer = setInterval(displayTime, 1000); // Update every second (1000 milliseconds)
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+        }
+
+        function displayTime() {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+            var timeString = hours + ":" + minutes + ":" + seconds;
+
+            document.getElementById("timeBox").value = timeString;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!-- Design the following form in HTML and display the value in result box after
+calculating basic arithmetic operations based on the user input with the use of
+javascript. -->
+<!DOCTYPE html>
+<head>
+    <title>Calculator</title>
+</head>
+<body>
+
+    <style>
+        #container{
+            text-align: center;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin:100px;
+            padding: 50px;
+            box-shadow: 0px 1px 2px 0px rgba(132, 140, 140, 0.7),
+            1px 2px 4px 0px rgba(132, 140, 140, 0.7),
+            2px 4px 8px 0px rgba(132, 140, 140, 0.7),
+            2px 4px 16px 0px rgba(132, 140, 140, 0.7);;
+        }
+        #operand1, #operand2{
+            margin: 5px 5px 5px 0px;
+            padding: 5px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        #operation{
+            margin: 10px;
+            padding: 5px;
+        }
+        
+        #operation #add, #sub, #mul, #div, #mod{
+            margin: 3px;
+            font-size: 16px;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 5px;   
+        }
+
+        #resultView{
+            font-size: 30px;
+        }
+        #result{
+            border: solid green 3px;
+            height: 35px;
+            width: 200px;
+            margin-left: 130px;
+        }
+    </style>
+
+    <div id="container">
+
+        <div id="inputs">
+            <h2>Basic Arithmetic Function</h2>
+            <label for="num1">Enter Operand 1:</label>
+            <input type="number" placeholder="OPERAND 1" name="OPERAND 1" id="operand1"><br>
+            <label for="num2">Enter Operand 2:</label>
+            <input type="number" placeholder="OPERAND 2" name="OPERAND 2" id="operand2"><br>
+        </div>
+
+        <div id="operation">
+             <button id="add" name="addition" onclick="calculate('add')">ADD</button>
+
+             <button id="sub" name="subtraction" onclick="calculate('subtract')">SUB</button>
+
+             <button id="mul" name="multiplication" onclick="calculate('multiply')">MUL</button>
+
+             <button id="div" name="division" onclick="calculate('divide')">DIV</button>
+
+             <button id="mod" name="modulus" onclick="calculate('mod')">MOD</button>        
+        </div>
+
+        <div id="resultView">
+            <label for="">Result: </label>
+            <p id="result"></p>
+           <br>
+        </div>
+    </div>
+
+    <script>
+        function calculate(operation) {
+        const num1 = parseFloat(document.getElementById('operand1').value);
+        const num2 = parseFloat(document.getElementById('operand2').value);
+        let result;
+
+        switch (operation) {
+            case 'add':
+            result = num1 + num2;
+            break;
+        case 'subtract':
+            result = num1 - num2;
+            break;
+        case 'multiply':
+            result = num1 * num2;
+            break;
+        case 'divide':
+            result = num1 / num2;
+            break;
+        case 'mod':
+            if(num1 > num2){
+                result = num1%num2
+            }else{
+                result = "Infinity";
+            };
+            break;
+        default:
+            result = 'Invalid operation';
+            break;
+      }
+
+      document.getElementById('result').textContent = `${result}`;
+    }
+    </script>
+</body>
+</html>

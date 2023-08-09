@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Validation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 300px;
+      padding: 5px;
+    }
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0a620e;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+    #error-message {
+      color: red;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Form Validation</h1>
+  <form onsubmit="return validateForm()">
+    <label for="full-name">Full Name: </label>
+    <input type="text" id="full-name" required maxlength="20">
+    <br>
+    <label for="email">Email Address: </label>
+    <input type="email" id="email" required>
+    <br>
+    <label for="username">Username: </label>
+    <input type="text" id="username" required pattern="^[a-zA-Z]+[0-9]+">
+    <br>
+    <label for="password">Password: </label>
+    <input type="password" id="password" required minlength="8">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="error-message"></div>
+
+  <script>
+    function validateForm() {
+      const fullNameInput = document.getElementById('full-name');
+      const emailInput = document.getElementById('email');
+      const usernameInput = document.getElementById('username');
+      const passwordInput = document.getElementById('password');
+      const errorMessage = document.getElementById('error-message');
+
+      // Reset error message
+      errorMessage.textContent = '';
+
+      // Validate Full Name (length up to 20 characters)
+      if (fullNameInput.value.length > 20) {
+        errorMessage.textContent = 'Full Name must be up to 20 characters';
+        return false;
+      }
+
+      // Validate Email Address (using a simple pattern)
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(emailInput.value)) {
+        errorMessage.textContent = 'Invalid Email Address';
+        return false;
+      }
+
+      // Validate Username (starting with a string followed by a number)
+      const usernamePattern = /^[a-zA-Z]+[0-9]+$/;
+      if (!usernamePattern.test(usernameInput.value)) {
+        errorMessage.textContent = 'Username must start with a letter and be followed by a number';
+        return false;
+      }
+
+      // Validate Password (length more than eight characters)
+      if (passwordInput.value.length <= 8) {
+        errorMessage.textContent = 'Password must be more than eight characters';
+        return false;
+      }
+
+      // If all validations pass, the form will be submitted
+      return true;
+    }
+  </script>
+</body>
+</html>

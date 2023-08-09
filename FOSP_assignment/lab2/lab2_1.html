@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+  <head>
+    <title>lab2</title>
+  </head>
+  <body>
+    <!-- <p>
+      +-------------------------------------------------+ <br>
+      |   N   |   10*N    |     100*N   |     1000*N    | <br>
+      +-------------------------------------------------+ <br>
+      |   1   |    10     |     100     |     1000      | <br>
+      +-------------------------------------------------+ <br>
+    </p>
+    <p>
+      You should ask the starting and ending value for N and the table should be displayed dynamically according to the value inputted by the user.
+    </p>
+<hr><hr> -->
+    <style>
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  margin: 5px;
+  padding: 5px 30px;
+}
+</style>
+
+    <table>
+      <tr>
+        <td id="td1"></td>
+        <td id="td2"></td>
+        <td id="td3"></td>
+        <td id="td4"></td>
+      </tr>
+
+      <tr>
+        <td>1</td>
+        <td>10</td>
+        <td>100</td>
+        <td>1000</td>
+      </tr>
+    </table>
+
+    <script>
+      const number = prompt();
+      td1 = document.getElementById("td1").innerText = number * 1;
+      td2 = document.getElementById("td2").innerText = number * 10;
+      td3 = document.getElementById("td3").innerText = number * 100;
+      td4 = document.getElementById("td4").innerText = number * 1000;
+    </script>
+  </body>
+</html>
